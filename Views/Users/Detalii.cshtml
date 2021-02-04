@@ -1,0 +1,24 @@
+﻿@model clinicaMedicala4.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Detalii";
+}
+
+<h2>Detalii</h2>
+
+@Html.LabelFor(u => u.Email, "Email:")
+<br />
+
+@Html.DisplayFor(u => u.Email)
+<br />
+<br />
+
+@Html.LabelFor(u => u.UserName, "Username:")
+<br />
+
+@Html.DisplayFor(u => u.UserName)
+<br />
+<br />
+
+<label>Role:</label>
+<p>@ViewBag.UserRole</p>

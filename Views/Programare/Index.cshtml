@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Programari";
+}
+<h2 class="text-center">@ViewBag.Title</h2>
+
+@*@foreach (var p in ViewBag.Filiale)
+    {
+        <div class="panel-body">
+            @Html.Label("Denumire", "Denumire:")
+            <br />
+            <p>@p.Denumire</p>
+            @Html.Label("Adresa", "Adresa:")
+            <br />
+            <p>@p.Adresa</p>
+        </div>
+
+    }*@
+
+@foreach (var aux in ViewBag.Programari)
+{
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            @Html.Label("An", "An: ")
+            <p>@aux.An</p>
+        </div>
+        
+        <div class="panel-heading">
+            @Html.Label("Luna", "Luna: ")
+            <p>@aux.Luna</p>
+        </div>
+        
+        <div class="panel-heading">
+            @Html.Label("Zi", "Zi: ")
+            <p>@aux.Zi</p>
+        </div>
+        
+        <div class="panel-heading">
+            @Html.Label("Ora", "Ora: ")
+            <p>@aux.Ora</p>
+        </div>
+
+        <div class="panel-body">
+            @Html.Label("TipProgramare", "Tip programare: ")
+            <p>@aux.TipProgramare</p>
+
+            @if (ViewBag.admin)
+            {
+                using (Html.BeginForm(actionName: "Detalii", controllerName: "Programare", method: FormMethod.Get,
+                 routeValues: new { id = aux.Programarid }))
+                {
+                    <p>Pentru a vizualiza(/modifica) datele de contact: </p>
+                    <button style="margin-right:5px" class="btn btn-warning col-lg-1" type="submit">
+                        Detalii
+                    </button>
+                }
+            }
+        </div>
+
+    </div>
+
+}
+@*<button style="margin-right:5px" class="btn btn-warning col-lg-1">@Html.ActionLink("Adaugare filiala", "New")</button>*@
+
+@* Daca suntem in rol de administrator *@
+@if (ViewBag.user)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p>Actiuni suplimentare</p>
+        </div>
+        <div class="panel-body">
+            <p> @Html.ActionLink("Adaugare programare", "New")</p>
+        </div>
+    </div>
+}
+

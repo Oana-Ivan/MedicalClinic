@@ -1,0 +1,42 @@
+﻿@model clinicaMedicala4.Models.Doctor
+@{
+    ViewBag.Title = "Adaugare un nou doctor";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Doctor", method: FormMethod.Post))
+{
+    @Html.Label("Nume", "Nume:")
+    <br />
+    @Html.TextBoxFor(aux => aux.Nume, null, new { placeholder = "Introduceti numele complet", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.Nume, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Specializare", "Specializare:")
+    <br />
+    @Html.TextBoxFor(aux => aux.Specializare, null, new { placeholder = "Introduceti specializarea", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.Specializare, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Varsta", "Varsta:")
+    <br />
+    @Html.TextBoxFor(aux => aux.Varsta, null, new { placeholder = "Introduceti varsta", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.Varsta, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Adresa", "Adresa:")
+    <br />
+    @Html.TextBoxFor(aux => aux.Adresa, null, new { placeholder = "Introduceti adresa completa", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.Adresa, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("NrTelefon", "Nr de telefon:")
+    <br />
+    @Html.TextBoxFor(aux => aux.NrTelefon, null, new { placeholder = "Introduceti numarul de telefon", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.NrTelefon, "", new { @class = "text-danger" })
+    <br />
+
+
+    <button class="btn btn-warning" type="submit">Create</button>
+}

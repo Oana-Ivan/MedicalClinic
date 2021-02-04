@@ -1,0 +1,59 @@
+﻿@model clinicaMedicala4.Models.Programare
+@{
+    ViewBag.Title = "Detalii programare";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        @Html.Label("An", "An:")
+        <br />
+        @Html.DisplayFor(aux => aux.An)
+        <br /><br />
+
+        @Html.Label("Luna", "Luna:")
+        <br />
+        @Html.DisplayFor(aux => aux.Luna)
+        <br /><br />
+
+        @Html.Label("Zi", "Zi:")
+        <br />
+        @Html.DisplayFor(aux => aux.Zi)
+        <br /><br />
+
+        @Html.Label("Ora", "Ora:")
+        <br />
+        @Html.DisplayFor(aux => aux.Ora)
+        <br /><br />
+
+        @Html.Label("TipProgramare", "TipProgramare:")
+        <br />
+        @Html.DisplayFor(aux => aux.TipProgramare)
+        <br />
+        <br />
+
+        @Html.Label("Observatii", "Observatii:")
+        <br />
+        @Html.DisplayFor(aux => aux.Observatii)
+        <br />
+        <br />
+    </div>
+</div>
+
+@* Daca suntem in rol de administrator *@
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Programare", method: FormMethod.Get, routeValues:
+    new { id = Model.ProgramareId }))
+{
+    <button style="margin-right:5px" class="btn btn-warning col-lg-1" type="submit">Update</button>
+}
+
+@using (Html.BeginForm(actionName: "Delete", controllerName: "Programare", method: FormMethod.Post, routeValues:
+    new { id = Model.ProgramareId }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button class="btn btn-warning col-lg-1" type="submit">Delete</button>
+}
+<br />
+

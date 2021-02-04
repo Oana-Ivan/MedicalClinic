@@ -1,0 +1,80 @@
+﻿@model clinicaMedicala4.Models.Pacient
+@{
+    ViewBag.Title = "Date despre pacient";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        @Html.Label("Nume", "Nume:")
+        <br />
+        @Html.DisplayFor(aux => aux.Nume)
+        <br /><br />
+
+        @Html.Label("Varsta", "Varsta:")
+        <br />
+        @Html.DisplayFor(aux => aux.Varsta)
+        <br />
+        <br />
+
+        @Html.Label("Diagnostic", "Diagnostic:")
+        <br />
+        @Html.DisplayFor(aux => aux.Diagnostic)
+        <br />
+        <br />
+
+        @Html.Label("Observatii", "Observatii: ")
+        <br />
+        @Html.DisplayFor(aux => aux.Observatii)
+        <br />
+        <br />
+
+        @Html.Label("Istoric", "Istoric: ")
+        <br />
+        @Html.DisplayFor(aux => aux.Istoric)
+        <br />
+        <br />
+
+        @if (Model.Doctori.Count > 0)
+        {
+            @Html.Label("Doctori", "Doctori:")
+            <br />
+            <ul>
+                @foreach (var d in Model.Doctori)
+                {
+                    <li>@d.Nume</li>
+                }
+            </ul>
+        }
+
+        @if (Model.Programari.Count > 0)
+        {
+            @Html.Label("Programari", "Programari:")
+            <br />
+            <ul>
+                @foreach (var p in Model.Programari)
+                {
+                    <li>@p.TipProgramare</li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+
+@* Daca suntem in rol de administrator *@
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Pacient", method: FormMethod.Get, routeValues:
+    new { id = Model.PacientId }))
+{
+    <button style="margin-right:5px" class="btn btn-warning col-lg-1" type="submit">Update</button>
+}
+
+@using (Html.BeginForm(actionName: "Delete", controllerName: "Pacient", method: FormMethod.Post, routeValues:
+    new { id = Model.PacientId }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button class="btn btn-warning col-lg-1" type="submit">Delete</button>
+}
+<br />
+

@@ -1,0 +1,54 @@
+﻿@model clinicaMedicala4.Models.Pacient
+@{
+    ViewBag.Title = "Adaugarea unui nou pacient";
+}
+
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Pacient", method: FormMethod.Post))
+{
+    @Html.Label("Nume", "Nume:")
+    <br />
+    @Html.TextBoxFor(aux => aux.Nume, null, new { placeholder = "Introduceti numele complet", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.Nume, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Varsta", "Varsta:")
+    <br />
+    @Html.TextBoxFor(aux => aux.Varsta, null, new { placeholder = "Introduceti varsta", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.Varsta, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Diagnostic", "Diagnostic:")
+    <br />
+    @Html.TextBoxFor(aux => aux.Diagnostic, null, new { placeholder = "Introduceti diagnosticul", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.Diagnostic, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Observatii", "Observatii:")
+    <br />
+    @Html.TextBoxFor(aux => aux.Observatii, null, new { placeholder = "Observatii despre pacient", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.Observatii, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Istoric", "Istoric:")
+    <br />
+    @Html.TextBoxFor(aux => aux.Istoric, null, new { placeholder = "Introduceti istoricul pacientului", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.Istoric, "", new { @class = "text-danger" })
+    <br />
+
+    @*@Html.LabelFor(b => b.ListaDoctori, "Alegeti doctorii:")
+    <br />
+    for (int i = 0; i < Model.ListaDoctori.Count(); i++)
+    {
+        @Html.HiddenFor(b => b.ListaDoctori[i].Id)
+        @Html.HiddenFor(b => b.ListaDoctori[i].Name)
+        @Html.CheckBoxFor(b => b.ListaDoctori[i].Checked)
+        @Html.DisplayFor(b => b.ListaDoctori[i].Name)
+        <br/>
+    }*@
+
+
+    <button class="btn btn-warning" type="submit">Create</button>
+}

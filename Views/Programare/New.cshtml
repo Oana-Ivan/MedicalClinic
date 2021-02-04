@@ -1,0 +1,53 @@
+﻿@model clinicaMedicala4.Models.Programare
+@{
+    ViewBag.Title = "Adaugare o noua programare";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Programare", method: FormMethod.Post))
+{
+    @Html.Label("An", "An:")
+    <br />
+    @Html.TextBoxFor(aux => aux.An, null, new { placeholder = "Introduceti anul", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.An, "", new { @class = "text-danger" })
+    <br />
+    
+    @Html.Label("Luna", "Luna:")
+    <br />
+    @Html.TextBoxFor(aux => aux.Luna, null, new { placeholder = "Introduceti luna", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.Luna, "", new { @class = "text-danger" })
+    <br />
+    
+    @Html.Label("Zi", "Zi:")
+    <br />
+    @Html.TextBoxFor(aux => aux.Zi, null, new { placeholder = "Introduceti ziua", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.Zi, "", new { @class = "text-danger" })
+    <br />
+    
+    @Html.Label("Ora", "Ora:")
+    <br />
+    @Html.TextBoxFor(aux => aux.Ora, null, new { placeholder = "Introduceti ora dorita (exemplu: 2:00)", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.Ora, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("TipProgramare", "Tip programare:")
+    <br />
+    @Html.TextBoxFor(aux => aux.TipProgramare, null, new { placeholder = "Introduceti tipul de programare", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.TipProgramare, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Pacient", "Pacient:")
+    <br />
+    @Html.TextBoxFor(aux => aux.Pacient.Nume, null, new { placeholder = "Introduceti numele pacientului", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.Pacient, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Observatii", "Observatii:")
+    <br />
+    @Html.TextBoxFor(aux => aux.Observatii, null, new { placeholder = "Eventuale observatii", @class = "form-control" })
+    @Html.ValidationMessageFor(aux => aux.Observatii, "", new { @class = "text-danger" })
+    <br />
+
+    <button class="btn btn-warning" type="submit">Create</button>
+}

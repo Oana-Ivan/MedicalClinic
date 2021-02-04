@@ -1,0 +1,62 @@
+﻿@model clinicaMedicala4.Models.Doctor
+@{
+    ViewBag.Title = "Date de contact doctor";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        @Html.Label("Nume", "Nume:")
+        <br />
+        @Html.DisplayFor(aux => aux.Nume)
+        <br /><br />
+
+        @Html.Label("Varsta", "Varsta:")
+        <br />
+        @Html.DisplayFor(aux => aux.Varsta)
+        <br />
+        <br />
+
+        @Html.Label("Adresa", "Adresa:")
+        <br />
+        @Html.DisplayFor(aux => aux.Adresa)
+        <br />
+        <br />
+
+        @Html.Label("NrTelefon", "Nr de telefon: ")
+        <br />
+        @Html.DisplayFor(aux => aux.NrTelefon)
+        <br />
+        <br />
+
+        @if (Model.Pacienti.Count > 0)
+        {
+            @Html.Label("Pacienti", "Pacienti:")
+            <br />
+            <ul>
+                @foreach (var p in Model.Pacienti)
+                {
+                    <li>@p.Nume</li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+
+@* Daca suntem in rol de administrator *@
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Doctor", method: FormMethod.Get, routeValues:
+    new { id = Model.DoctorId }))
+{
+    <button style="margin-right:5px" class="btn btn-warning col-lg-1" type="submit">Update</button>
+}
+
+@using (Html.BeginForm(actionName: "Delete", controllerName: "Doctor", method: FormMethod.Post, routeValues:
+    new { id = Model.DoctorId }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button class="btn btn-warning col-lg-1" type="submit">Delete</button>
+}
+<br />
+

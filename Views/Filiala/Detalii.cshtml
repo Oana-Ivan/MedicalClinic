@@ -1,0 +1,59 @@
+﻿@model clinicaMedicala4.Models.Filiala
+
+@{
+    ViewBag.Title = "Detalii punct de lucru";
+
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @Html.Label("Denumire", "Denumire:")
+        <br />
+        @Html.DisplayFor(f => f.Denumire)
+        <br /><br />
+
+        @Html.Label("Adresa", "Adresa:")
+        <br />
+        @Html.DisplayFor(f => f.Adresa)
+        <br />
+        <br />
+
+        @Html.Label("DetaliiProgram", "Detalii program:")
+        <br />
+        @Html.DisplayFor(f => f.DetaliiProgram)
+        <br />
+        <br />
+
+        @if (Model.Departamente.Count > 0)
+        {
+            @Html.Label("Departamente", "Departamentele existente in cadrul acestui punct de lucru:")
+            <br />
+            <ul>
+                @foreach (var dep in Model.Departamente)
+                {
+                    <li>@dep.Denumire</li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+
+@* Daca suntem in rol de administrator *@
+@if (ViewBag.rol == 1)
+{
+    using (Html.BeginForm(actionName: "Edit", controllerName: "Filiala", method: FormMethod.Get, routeValues:
+    new { id = Model.FilialaId }))
+    {
+        <button style="margin-right:5px" class="btn btn-warning col-lg-1" type="submit">Update</button>
+    }
+
+    using (Html.BeginForm(actionName: "Delete", controllerName: "Filiala", method: FormMethod.Post, routeValues:
+        new { id = Model.FilialaId }))
+    {
+        @Html.HttpMethodOverride(HttpVerbs.Delete)
+        <button class="btn btn-warning col-lg-1" type="submit">Delete</button>
+    }
+    <br />
+}

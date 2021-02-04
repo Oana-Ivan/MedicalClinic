@@ -1,0 +1,28 @@
+﻿@model clinicaMedicala4.Models.Filiala
+
+@{
+    ViewBag.Title = "Editeaza detaliile despre filiala";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Filiala"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+    <!--camp ascuns pentru a retine id-ul obiectului-->
+    @Html.HiddenFor(f => f.FilialaId)
+    <br />
+    @Html.Label("Denumire", "Denumire:")
+    <br />
+    @Html.EditorFor(f => f.Denumire, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(f => f.Denumire, "", new { @class = "text-danger" })
+    <br />
+    <br />
+    @Html.Label("Adresa", "Adresa:")
+    <br />
+    @Html.Editor("Adresa", new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(f => f.Adresa, "", new { @class = "text-danger" })
+    <br />
+    <br />
+    <button class="btn btn-warning" type="submit">Update</button>
+}

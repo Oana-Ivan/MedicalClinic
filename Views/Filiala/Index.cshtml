@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Puncte de lucru deschise";
+}
+<h2 class="text-center">@ViewBag.Title</h2>
+
+@foreach (var f in ViewBag.Filiale)
+{
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            @Html.Label("Denumire", "Denumire: ")
+            <p>@f.Denumire</p>
+        </div>
+
+        <div class="panel-body">
+            @Html.Label("Adresa", "Adresa: ")
+            <p>@f.Adresa</p>
+
+            @if (f.Sediu)
+            {
+                <p>Aici se afla sediul companiei.</p>
+            }
+
+            @using (Html.BeginForm(actionName: "Detalii", controllerName: "Filiala", method: FormMethod.Get,
+             routeValues: new { id = f.FilialaId }))
+            {
+                <p>Pentru a vizualiza(/modifica) detalii despre aceast punct de lucru: </p>
+                <button style="margin-right:5px" class="btn btn-warning col-lg-1" type="submit">
+                    Detalii
+                </button>
+            }
+        </div>
+
+    </div>
+
+}
+@*<button style="margin-right:5px" class="btn btn-warning col-lg-1">@Html.ActionLink("Adaugare filiala", "New")</button>*@
+
+@* Daca suntem in rol de administrator *@
+@if (ViewBag.rol == 1)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p>Actiuni suplimentare</p>
+        </div>
+        <div class="panel-body">
+            <p> @Html.ActionLink("Adaugare filiala", "New")</p>
+        </div>
+    </div>
+}
+

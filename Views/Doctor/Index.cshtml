@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Doctorii clinicii";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+
+@foreach (var aux in ViewBag.Doctori)
+{
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            @Html.Label("Nume", "Nume: ")
+            <p>@aux.Nume</p>
+        </div>
+
+        <div class="panel-body">
+            @Html.Label("Specializare", "Specializare: ")
+            <p>@aux.Specializare</p>
+
+            @if (ViewBag.admin)
+            {
+                using (Html.BeginForm(actionName: "Detalii", controllerName: "Doctor", method: FormMethod.Get,
+                 routeValues: new { id = aux.DoctorId }))
+                {
+                    <p>Pentru a vizualiza(/modifica) datele de contact: </p>
+                    <button style="margin-right:5px" class="btn btn-warning col-lg-1" type="submit">
+                        Detalii
+                    </button>
+                }
+            }
+        </div>
+
+    </div>
+
+}
+@*<button style="margin-right:5px" class="btn btn-warning col-lg-1">@Html.ActionLink("Adaugare filiala", "New")</button>*@
+
+@* Daca suntem in rol de administrator *@
+@if (ViewBag.admin)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p>Actiuni suplimentare</p>
+        </div>
+        <div class="panel-body">
+            <p> @Html.ActionLink("Adaugare doctor", "New")</p>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,22 @@
+﻿@model clinicaMedicala4.Models.Filiala
+@{
+    ViewBag.Title = "Adaugare punct de lucru nou";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Filiala", method: FormMethod.Post))
+{
+    @Html.Label("Denumire", "Denumire:")
+    <br />
+    @Html.TextBoxFor(f => f.Denumire, null, new { placeholder = "Introduceti denumirea filialei", @class = "form-control" })
+    @Html.ValidationMessageFor(f => f.Denumire, "", new { @class = "text-danger" })
+    <br />
+    @Html.Label("Adresa", "Adresa:")
+    <br />
+    @Html.TextBoxFor(f => f.Adresa, null, new { placeholder = "Introduceti adresa filialei", @class = "form-control" })
+    @Html.ValidationMessageFor(f => f.Adresa, "", new { @class = "text-danger" })
+    <br />
+
+    <button class="btn btn-warning" type="submit">Create</button>
+}

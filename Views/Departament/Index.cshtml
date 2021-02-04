@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Departamente";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@foreach (var dep in ViewBag.Departamente)
+{
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            @Html.Label("Denumire", "Denumire: ")
+            <p>@dep.Denumire</p>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm(actionName: "Detalii", controllerName: "Departament", method: FormMethod.Get,
+             routeValues: new { id = dep.DepId }))
+            {
+                <p>Pentru a vizualiza(/modifica) detalii despre aceast departament: </p>
+                <button style="margin-right:5px" class="btn btn-warning col-lg-1" type="submit">
+                    Detalii
+                </button>
+            }
+        </div>
+
+    </div>
+
+}
+@*<button style="margin-right:5px" class="btn btn-warning col-lg-1">@Html.ActionLink("Adaugare filiala", "New")</button>*@
+
+@* Daca suntem in rol de administrator *@
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <p>Actiuni suplimentare</p>
+    </div>
+    <div class="panel-body">
+        <p> @Html.ActionLink("Adaugare departament", "New")</p>
+    </div>
+</div>
+

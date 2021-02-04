@@ -1,0 +1,51 @@
+﻿@model clinicaMedicala4.Models.Doctor
+
+@{
+    ViewBag.Title = "Editeaza detaliile despre doctor";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Doctor"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+    <!--camp ascuns pentru a retine id-ul obiectului-->
+    @Html.HiddenFor(aux => aux.DoctorId)
+    <br />
+
+    @Html.Label("Nume", "Nume:")
+    <br />
+    @Html.EditorFor(aux => aux.Nume, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(aux => aux.Nume, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Specializare", "Specializare:")
+    <br />
+    @Html.EditorFor(aux => aux.Specializare, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(aux => aux.Specializare, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Varsta", "Varsta:")
+    <br />
+    @Html.EditorFor(aux => aux.Varsta, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(aux => aux.Varsta, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Adresa", "Adresa:")
+    <br />
+    @Html.EditorFor(aux => aux.Adresa, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(aux => aux.Adresa, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("NrTelefon", "Nr de telefon:")
+    <br />
+    @Html.EditorFor(aux => aux.NrTelefon, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(aux => aux.NrTelefon, "", new { @class = "text-danger" })
+    <br />
+    <br />
+    <button class="btn btn-warning" type="submit">Update</button>
+}

@@ -1,0 +1,63 @@
+﻿@model clinicaMedicala4.Models.Pacient
+
+@{
+    ViewBag.Title = "Editeaza detaliile despre pacient";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Pacient"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+    <!--camp ascuns pentru a retine id-ul obiectului-->
+    @Html.HiddenFor(aux => aux.PacientId)
+    <br />
+
+    @Html.Label("Nume", "Nume:")
+    <br />
+    @Html.EditorFor(aux => aux.Nume, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(aux => aux.Nume, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Varsta", "Varsta:")
+    <br />
+    @Html.EditorFor(aux => aux.Varsta, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(aux => aux.Varsta, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Diagnostic", "Diagnostic:")
+    <br />
+    @Html.EditorFor(aux => aux.Diagnostic, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(aux => aux.Diagnostic, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Observatii", "Observatii:")
+    <br />
+    @Html.EditorFor(aux => aux.Observatii, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(aux => aux.Observatii, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Istoric", "Istoric:")
+    <br />
+    @Html.EditorFor(aux => aux.Istoric, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(aux => aux.Istoric, "", new { @class = "text-danger" })
+    <br />
+
+    @*@Html.LabelFor(b => b.ListaDoctori, "Alegeti doctorii:")
+    <br />
+    for (int i = 0; i < Model.ListaDoctori.Count(); i++)
+    {
+        @Html.HiddenFor(b => b.ListaDoctori[i].Id)
+        @Html.HiddenFor(b => b.ListaDoctori[i].Name)
+        @Html.CheckBoxFor(b => b.ListaDoctori[i].Checked)
+        @Html.DisplayFor(b => b.ListaDoctori[i].Name)
+        <br />
+    }*@
+
+    <br />
+    <button class="btn btn-warning" type="submit">Update</button>
+}

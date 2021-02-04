@@ -1,0 +1,36 @@
+﻿@model clinicaMedicala4.Models.Departament
+@{
+    ViewBag.Title = "Detalii departament";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="panel panel-default">
+    @*<div class="panel-body">*@
+        @Html.Label("Denumire", "Denumire:")
+        <br />
+        @Html.DisplayFor(dep => dep.Denumire)
+        <br /><br />
+
+        @Html.Label("NrAngajati", "Numarul de angajati din acest departament: ")
+        <br />
+        @Html.DisplayFor(dep => dep.NrAngajati)
+        <br />
+        <br />
+    @*</div>*@
+</div>
+
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Departament", method: FormMethod.Get, routeValues:
+new { id = Model.DepId }))
+{
+    <button style="margin-right:5px" class="btn btn-warning col-lg-1" type="submit">Update</button>
+}
+
+@using (Html.BeginForm(actionName: "Delete", controllerName: "Departament", method: FormMethod.Post, routeValues:
+    new { id = Model.DepId }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button class="btn btn-warning col-lg-1" type="submit">Delete</button>
+}
+<br />
